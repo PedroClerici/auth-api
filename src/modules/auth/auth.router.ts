@@ -5,7 +5,7 @@ import type { FastifyInstance } from "fastify";
 import { verifyJwtHook } from "@/hooks/verify-jwt.hook";
 
 export async function authRouter(app: FastifyInstance) {
-	app.get(
+	app.post(
 		"/token",
 		{
 			schema: {
@@ -13,6 +13,9 @@ export async function authRouter(app: FastifyInstance) {
 				response: {
 					200: z.object({ token: z.string() }),
 				},
+				body: z.object({
+					key: z.string(),
+				}),
 			},
 		},
 		authController.token,

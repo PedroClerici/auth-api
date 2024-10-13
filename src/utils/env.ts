@@ -5,6 +5,7 @@ config();
 
 const envSchema = z.object({
 	NODE_ENV: z.enum(["development", "production", "test"]),
+	KEY: z.string(),
 	JWT_SECRET: z.string(),
 	JWT_AUTH_TOKEN_EXPIRE_IN_MINUTES: z.coerce.number(),
 	PORT: z.coerce.number(),
